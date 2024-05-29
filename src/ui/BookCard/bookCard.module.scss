@@ -1,16 +1,18 @@
+@import '../../styles/abstracts/variables';
+
 .bookCard {
   position: relative;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     width: 200px;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
     transition: transform 0.2s;
 
     a {text-decoration: none;}
 
     &:hover {
+      border-radius: 4px;
       transform: scale(1.05);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
     
     .bookCover {
@@ -28,6 +30,7 @@
     .bookTitle {
       font-size: 1.2em;
       margin: 10px 0 5px;
+      color: $text-color;
     }
     
     .bookAuthor {
@@ -44,7 +47,6 @@
     
     .bookPublicationDate {
       font-size: 0.8em;
-      color: #777;
     }
 
     .bookLoveIcon {
