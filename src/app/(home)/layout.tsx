@@ -1,4 +1,5 @@
 import Header from "@/components/Header"
+import Sidebar from "@/components/Sidebar"
 
 export default function BookLayout({
   children,
@@ -6,9 +7,12 @@ export default function BookLayout({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <>
       <Header />
-      {children}
-    </section>
+      <div style={{ display: "flex" }}>
+        <Sidebar />
+        <main>{children}</main>
+      </div>
+    </>
   )
 }

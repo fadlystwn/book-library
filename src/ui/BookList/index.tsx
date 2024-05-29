@@ -20,6 +20,9 @@ const BookList = () => {
 
   return (
     <div className={styles.bookListContainer}>
+      <div className={styles.heading}>
+        <h1>Library</h1>
+      </div>
       <div className={styles.bookList}>
         {data && currentItems.map(book => (
           <BookCard key={book.id} book={book} />
