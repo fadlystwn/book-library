@@ -1,0 +1,88 @@
+@import '../styles/main.scss';
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  font-weight: $font-weight-normal;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  line-height: $line-height-heading;
+  color: $text-color;
+  margin-bottom: $paragraph-margin;
+}
+
+h1 {
+  font-size: $h1-font-size;
+  font-weight: $font-weight-bold;
+  color: $primary-color;
+}
+
+h2 {
+  font-size: $h2-font-size;
+  font-weight: $font-weight-bold;
+  color: $secondary-color;
+}
+
+h3 {
+  font-size: $h3-font-size;
+  font-weight: $font-weight-bold;
+  color: $tertiary-color;
+}
+
+h4 {
+  font-size: $h4-font-size;
+  font-weight: $font-weight-normal;
+  color: $quaternary-color;
+}
+
+h5 {
+  font-size: $h5-font-size;
+  font-weight: $font-weight-normal;
+}
+
+h6 {
+  font-size: $h6-font-size;
+  font-weight: $font-weight-normal;
+}
+
+p {
+  margin: $paragraph-margin;
+  font-size: $font-size-base;
+  color: $text-color;
+}
+
+small {
+  font-size: $font-size-small;
+  color: $gray-600;
+}
+
+.large-text {
+  font-size: $font-size-large;
+  color: $text-color;
+}
+
+.xlarge-text {
+  font-size: $font-size-xlarge;
+  color: $text-color;
+}
+
+.success-text {
+  color: $success-color;
+}
+
+.error-text {
+  color: $error-color;
+}
+
+.warning-text {
+  color: $warning-color;
+}
+
+.info-text {
+  color: $info-color;
+}
