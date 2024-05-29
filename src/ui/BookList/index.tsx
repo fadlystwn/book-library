@@ -1,23 +1,31 @@
 "use client"
-import React from 'react';
+import axios from 'axios';
+import useSWR from 'swr';
 import styles from './booklist.module.scss';
 import BookCard from '@/ui/BookCard';
-import { books } from '@/data/books';
 import usePagination from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
 
+const fetcher = (url: string) => axios.get(url).then(res => res.data)
+
 const BookList = () => {
+  const apiUrl = `${process.env.NEXT_PUBLIC_API}/books`;
+
+  const { data, error, isLoading } = useSWR(apiUrl, fetcher);
   const booksPerPage: number = 5;
-  const { currentPage, totalPages, currentItems, handleClick } = usePagination(books, booksPerPage);
+  const { currentPage, totalPages, currentItems, handleClick } = usePagination(data, booksPerPage);
+
+  if (error) return <div>Error loading books</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className={styles.bookListContainer}>
       <div className={styles.bookList}>
-        {currentItems.map(book => (
+        {data && currentItems.map(book => (
           <BookCard key={book.id} book={book} />
         ))}
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} handleClick={handleClick} />
+      {data && (<Pagination currentPage={currentPage} totalPages={totalPages} handleClick={handleClick} />)}
     </div>
   );
 };
