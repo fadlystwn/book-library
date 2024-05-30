@@ -1,13 +1,13 @@
 @import '../../styles/abstracts/variables';
 
 .header {
-  background-color: lighten($primary-color, 26);
+  background-color: $tertiary-color;
   
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 24px;
   }
   
   .navList {
@@ -18,13 +18,13 @@
   }
   
   .navItem {
-    margin-right: 20px;
+    margin-right: 24px;
   }
   
   .navLink {
     color: white;
     text-decoration: none;
-    padding: 14px 20px;
+    padding: 16px 24px;
     display: block;
   }
   
@@ -39,7 +39,7 @@
   }
   
   .logo img {
-    height: 40px;
+    height: 48px;
   }
 }
  
