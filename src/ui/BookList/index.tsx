@@ -5,6 +5,8 @@ import styles from './booklist.module.scss';
 import BookCard from '@/ui/BookCard';
 import usePagination from '@/hooks/usePagination';
 import Pagination from '@/components/Pagination';
+import Button from '@/components/Button';
+import LoadingComponent from '@/components/Loader';
 
 const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
@@ -16,19 +18,26 @@ const BookList = () => {
   const { currentPage, totalPages, currentItems, handleClick } = usePagination(data, booksPerPage);
 
   if (error) return <div>Error loading books</div>;
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className={styles.bookListContainer}>
       <div className={styles.heading}>
-        <h1>Library</h1>
+        <h1>Popular Books</h1>
+        <Button text="Add Book" onClick={() => { }} />
       </div>
-      <div className={styles.bookList}>
-        {data && currentItems.map(book => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </div>
-      {data && (<Pagination currentPage={currentPage} totalPages={totalPages} handleClick={handleClick} />)}
+      {
+        isLoading ? (<LoadingComponent />)
+          : (
+            <div>
+              <div className={styles.bookList}>
+                {data && currentItems.map(book => (
+                  <BookCard key={book.id} book={book} />
+                ))}
+              </div>
+              {data && (<Pagination currentPage={currentPage} totalPages={totalPages} handleClick={handleClick} />)}
+            </div>
+          )
+      }
     </div>
   );
 };

@@ -1,16 +1,24 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import styles from './button.module.scss'
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    // Define any additional props specific to your Button component
-    // For example, you might want to define a prop for the button color
+// components/Button.tsx
+import React from 'react';
+import styles from './Button.module.scss';
+
+interface ButtonProps {
+  text: string;
+  onClick: () => void;
+  className?: string;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
-    return (
-        <button className={styles.button} {...rest}>
-            {children}
-        </button >
-    );
+const Button: React.FC<ButtonProps> = ({ text, onClick, className = '', disabled = false }) => {
+  return (
+    <button
+      className={`${styles.button} ${className}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {text}
+    </button>
+  );
 };
 
 export default Button;

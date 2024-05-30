@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import ImageFallback from '@/components/ImageFallback';
 import { Book } from '@/types/Book';
 import styles from './bookCard.module.scss';
 import { Icon } from '@iconify/react';
@@ -36,7 +36,14 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
       </div>
       <Link href={`books/${book.id}`}>
         <div className={styles.bookCoverContainer}>
-          <Image src={book.cover} alt={`${book.title} cover`} className={styles.bookCover} width={150} height={150} />
+          <ImageFallback
+            src={book.cover}
+            alt={`${book.title} cover`}
+            className={styles.bookCover}
+            width={150}
+            height={150}
+
+          />
           <div className={styles.bookDetails}>
             <h2 className={styles.bookTitle}>{book.title}</h2>
             <h3 className={styles.bookAuthor}>{book.author}</h3>
