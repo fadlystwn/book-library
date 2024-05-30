@@ -20,6 +20,12 @@ const BookList = () => {
   const apiUrl = `${process.env.NEXT_PUBLIC_API}/books`;
   const { data: apiData, error, isLoading } = useSWR(apiUrl, fetcher);
   const booksPerPage: number = 5;
+  const [localBooks, setLocalBooks] = useState<Book[]>([]);
+
+  useEffect(() => {
+    const localStorageBooks = getBooksFromLocalStorage();
+    setLocalBooks(localStorageBooks);
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -29,18 +35,10 @@ const BookList = () => {
     setIsModalOpen(false);
   };
 
-  const [localBooks, setLocalBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    const localStorageBooks = getBooksFromLocalStorage();
-    setLocalBooks(localStorageBooks);
-  }, [getBooksFromLocalStorage]);
-
+  const mergedData = apiData ? [...apiData, ...localBooks] : localBooks;
+  const { currentPage, totalPages, currentItems, handleClick } = usePagination(mergedData || [], booksPerPage);
 
   if (error) return <div>Error loading books</div>;
-
-  const mergedData = apiData ? [...apiData, ...localBooks] : localBooks;
-  const { currentPage, totalPages, currentItems, handleClick } = usePagination(mergedData, booksPerPage);
 
   return (
     <>
