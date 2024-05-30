@@ -4,7 +4,7 @@ import ImageFallback from '@/components/ImageFallback';
 import { Book } from '@/types/Book';
 import styles from './bookCard.module.scss';
 import { Icon } from '@iconify/react';
-
+import getBooksFromLocalStorage from '@/utils/getBookFromLocalStorage';
 type BookCardProps = {
   book: Book;
 };
@@ -22,6 +22,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
 
   useEffect(() => {
     const storedLiked = localStorage.getItem(`liked_${book.id}`);
+
     if (storedLiked) {
       setIsLiked(JSON.parse(storedLiked));
     }
