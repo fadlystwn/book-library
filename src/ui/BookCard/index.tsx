@@ -17,6 +17,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
     const newLikedState = !isLiked;
     setIsLiked(newLikedState);
     localStorage.setItem(`liked_${book.id}`, JSON.stringify(newLikedState));
+    localStorage.setItem(`book_${book.id}`, JSON.stringify(book))
   };
 
   useEffect(() => {

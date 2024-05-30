@@ -15,9 +15,9 @@ const Sidebar = () => {
             <span>Home</span>
           </Link></li>
         <li>
-          <Link href="/">
+          <Link href="/favourites">
             <Icon icon="mdi:book-love" fontSize={24} style={{ marginRight: 8 }} />
-            <span>Favourite</span>
+            <span>Favourites</span>
           </Link></li>
 
       </ul>
