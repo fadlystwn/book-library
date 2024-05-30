@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import styles from './header.module.scss';
 
 const Header = () => {
@@ -6,7 +8,9 @@ const Header = () => {
     <header className={styles.header} >
       <nav className={styles.navbar}>
         <div className={styles.logo}>
-          Logo
+          <Link href="/">
+            <Image src="/logo.png" width={128} height={32} alt="logo" />
+          </Link>
         </div>
         <ul className={styles.navList}>
           <li className={styles.navItem}>
