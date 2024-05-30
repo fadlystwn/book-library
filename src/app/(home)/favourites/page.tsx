@@ -3,22 +3,16 @@ import { FC, useEffect, useState } from 'react';
 import { Book } from '@/types/Book';
 import BookCard from '@/ui/BookCard';
 import styles from './favourites.module.scss';
+import getBooksFromLikedKeys from '@/utils/getBooksFromLike';
+import getLikesFromLocalStorage from '@/utils/getLikesFromLocalStorage';
 
 const FavoritesPage: FC = () => {
   const [favoriteBooks, setFavoriteBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    const favoriteBooksArray: Book[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && key.startsWith('liked_') && JSON.parse(localStorage.getItem(key)!)) {
-        const book = JSON.parse(localStorage.getItem(key.replace('liked_', 'book_'))!);
-        if (book) {
-          favoriteBooksArray.push(book);
-        }
-      }
-    }
-    console.log(favoriteBooks)
+    const likedKeys = getLikesFromLocalStorage();
+    const favoriteBooksArray = getBooksFromLikedKeys(likedKeys);
+
     setFavoriteBooks(favoriteBooksArray);
   }, []);
 

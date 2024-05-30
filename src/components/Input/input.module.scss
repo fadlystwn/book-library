@@ -1,0 +1,34 @@
+/* components/Input.module.scss */
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #0070f3;
+    outline: none;
+  }
+
+  &.error {
+    border-color: #ff4d4f;
+  }
+}
+
+.errorMessage {
+  margin-top: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+}
