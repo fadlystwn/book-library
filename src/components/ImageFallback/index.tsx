@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
 
 interface ImageFallbackProps extends ImageProps {
@@ -8,6 +8,10 @@ interface ImageFallbackProps extends ImageProps {
 
 const ImageFallback: FC<ImageFallbackProps> = ({ src, alt, ...props }) => {
   const [imgSrc, setImgSrc] = useState(src);
+
+  useEffect(() => {
+    setImgSrc(src);
+  }, [src]);
 
   return (
     <Image
